@@ -13,8 +13,8 @@ import com.google.android.glass.media.Sounds;
 import com.google.android.glass.timeline.TimelineManager;
 import java.io.IOException;
 
-public class BootActivity extends Activity{
-	public String ssh_command = "touch boot";
+public class ShutdownActivity extends Activity{
+	public String ssh_command = "touch shutdown";
 	
 	public boolean send_command() throws IOException {
 		AsyncTask<String, Void, Boolean> ssh_exec = new BackgroundSSHExec().execute(this.ssh_command);
@@ -37,12 +37,12 @@ public class BootActivity extends Activity{
 		Card boot_card = new Card(this);
 		try {
 			if(send_command()){
-				boot_card.setText("Computer booted");
+				boot_card.setText("Computer shut down");
 				boot_card.setFootnote(date);
 				timeline.insert(boot_card);
 				audio.playSoundEffect(Sounds.SUCCESS);
 			} else {
-				boot_card.setText("Computer failed to boot");
+				boot_card.setText("Computer failed to shut down");
 				boot_card.setFootnote(date);
 				timeline.insert(boot_card);
 				audio.playSoundEffect(Sounds.ERROR);

@@ -2,4 +2,5 @@
 
     <string name="app_name">Boot My Computer</string>
 	<string name="boot_my_computer">boot my computer</string>
+	<string name="shutdown_computer">shutdown my computer</string>
 </resources>
