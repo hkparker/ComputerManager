@@ -14,7 +14,7 @@ import com.google.android.glass.timeline.TimelineManager;
 import java.io.IOException;
 
 public class BootActivity extends Activity{
-	public String ssh_command = "touch boot";
+	public String ssh_command = "sudo arp -W 11:22:33:44:55:66 em0";
 	
 	public boolean send_command() throws IOException {
 		AsyncTask<String, Void, Boolean> ssh_exec = new BackgroundSSHExec().execute(this.ssh_command);

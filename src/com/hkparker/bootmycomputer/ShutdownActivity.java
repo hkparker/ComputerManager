@@ -14,7 +14,7 @@ import com.google.android.glass.timeline.TimelineManager;
 import java.io.IOException;
 
 public class ShutdownActivity extends Activity{
-	public String ssh_command = "touch shutdown";
+	public String ssh_command = "ssh hayden@192.168.1.2 'sudo shutdown -h now'";
 	
 	public boolean send_command() throws IOException {
 		AsyncTask<String, Void, Boolean> ssh_exec = new BackgroundSSHExec().execute(this.ssh_command);

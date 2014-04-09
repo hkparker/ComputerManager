@@ -10,9 +10,9 @@ import net.schmizz.sshj.connection.channel.direct.Session.Command;
 import net.schmizz.sshj.transport.verification.HostKeyVerifier;
 
 public class BackgroundSSHExec extends AsyncTask<String, Void, Boolean> {
-	public String ssh_server = "hkparker.dyndns.org";
+	public String ssh_server = "";			// so much for dyndns :(
 	public String ssh_user = "hayden";
-	public String ssh_password = "";
+	public String ssh_password = "hunter2";  // no not really
 	public Integer ssh_port = 22;
 	public Integer expected_exit_status = 0;
 	
