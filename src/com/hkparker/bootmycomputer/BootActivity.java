@@ -1,16 +1,12 @@
 package com.hkparker.bootmycomputer;
 
-import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
-import java.text.SimpleDateFormat;
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import com.google.android.glass.app.Card;
 import com.google.android.glass.media.Sounds;
-import com.google.android.glass.timeline.TimelineManager;
 import java.io.IOException;
 
 public class BootActivity extends Activity{
@@ -29,22 +25,11 @@ public class BootActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		TimelineManager timeline = TimelineManager.from(this);
 		AudioManager audio = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
-		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat date_format = new SimpleDateFormat("KK:mm a, LLLL F");
-		String date = String.format(date_format.format(calendar.getTime()));
-		Card boot_card = new Card(this);
 		try {
 			if(send_command()){
-				boot_card.setText("Computer booted");
-				boot_card.setFootnote(date);
-				timeline.insert(boot_card);
 				audio.playSoundEffect(Sounds.SUCCESS);
 			} else {
-				boot_card.setText("Computer failed to boot");
-				boot_card.setFootnote(date);
-				timeline.insert(boot_card);
 				audio.playSoundEffect(Sounds.ERROR);
 			}
 		} catch (IOException e) { }
